@@ -23,12 +23,19 @@
 
 def play_again() -> bool:
     ''' Asks the user if they want to play again, returns False if N or NO, and True if Y or YES.  Keeps asking until they respond yes '''
-
+    while True:
+        play = input('Do you want to play again?\n')
+        play = play.upper
+        if play == 'Y' or play == 'YES':
+            return True
+        elif play == 'N' or play =='NO'
+            return False
+        print('You must enter Y/YES/N/NO to continue. Please try again')
     return True
      
 def get_wager(bank : int) -> int:
     ''' Asks the user for a wager chip amount.  Continues to ask if they result is <= 0 or greater than the amount they have '''
-
+    
     return 1            
 
 def get_slot_results() -> tuple:
