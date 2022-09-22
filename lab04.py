@@ -19,16 +19,16 @@
 ########################################################################
 
 #import modules needed
-import.random
+import random
 
 def play_again() -> bool:
     ''' Asks the user if they want to play again, returns False if N or NO, and True if Y or YES.  Keeps asking until they respond yes '''
     while True:
         play = input('Do you want to play again?\n')
         play = play.upper
-        if play == 'Y' or play == 'YES':
+        if (play == 'Y') or (play == 'YES'):
             return True
-        elif play == 'N' or play =='NO'
+        elif (play == 'N') or (play =='NO'):
             return False
         print('You must enter Y/YES/N/NO to continue. Please try again')
      
@@ -100,14 +100,16 @@ if __name__ == "__main__":
             payout = get_payout(wager, matches)
             bank = bank + payout
             if bank > newbank:
-                
+                newhigh = bank
+            newbank = bank
 
             print("Your spin", reel1, reel2, reel3)
             print("You matched", matches, "reels")
             print("You won/lost", payout)
             print("Current bank", bank)
             print()
+            count += 1
            
-        print("You lost all", 0, "in", 0, "spins")
-        print("The most chips you had was", 0)
+        print("You lost all {} in {} spins".format(initialbank,count))
+        print("The most chips you had was {}".format(newhigh))
         playing = play_again()
