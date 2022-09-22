@@ -25,24 +25,25 @@ def play_again() -> bool:
     ''' Asks the user if they want to play again, returns False if N or NO, and True if Y or YES.  Keeps asking until they respond yes '''
     while True:
         play = input('Do you want to play again?\n')
-        play = play.upper
+        play = play.upper()
         if (play == 'Y') or (play == 'YES'):
             return True
         elif (play == 'N') or (play =='NO'):
             return False
         print('You must enter Y/YES/N/NO to continue. Please try again')
-     
+    return True
 def get_wager(bank : int) -> int:
     ''' Asks the user for a wager chip amount.  Continues to ask if they result is <= 0 or greater than the amount they have '''
     while True:
-        wager = int(input('How many chips do you want to wager'))
+        wager = int(input('How many chips do you want to wager? '))
         if wager > bank:
             print('The wager amount cannot be greater than how much you have.  {}'.format(bank))
+            wager = bank #this is so that if i enter amount greater than what I have, it uses the max bet i can make instead
         if wager < 1:
             print('The wager amount must be greater than 0. Please enter again.')
         else:
             return wager            
-
+    return 1
 def get_slot_results() -> tuple:
     ''' Returns the result of the slot pull '''
     numA = random.randint(1,10)
@@ -61,7 +62,7 @@ def get_matches(reela, reelb, reelc) -> int:
 def get_bank() -> int:
     ''' Returns how many chips the user wants to play with.  Loops until a value greater than 0 and less than 101 '''
     while True:
-        chips = int(input('How many chips do you want to start with?'))
+        chips = int(input('How many chips do you want to start with? '))
         if (chips > 0 and chips < 101):
             return chips
         elif chips < 1:
